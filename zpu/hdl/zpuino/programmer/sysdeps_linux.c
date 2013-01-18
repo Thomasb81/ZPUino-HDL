@@ -191,7 +191,7 @@ buffer_t *conn_transmit(connection_t conn, const unsigned char *buf, size_t size
 					gettimeofday(&tv,NULL);
 
 					printf("[%d.%06d] Rx:",
-						  tv.tv_sec,tv.tv_usec);
+						  (int)tv.tv_sec,(int)tv.tv_usec);
 					for (i=0; i<rd; i++) {
 						printf(" 0x%02x",tmpbuf[i]);
 					}
@@ -259,7 +259,7 @@ int conn_parse_speed(unsigned int value,speed_t *speed)
 		*speed = B115200;
 		break;
 	default:
-		printf("Baud rate '%s' not supported\n",value);
+		printf("Baud rate '%d' not supported\n",value);
 		return -1;
 	}
 	return 0;

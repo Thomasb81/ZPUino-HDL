@@ -66,7 +66,7 @@ buffer_t *handle()
 	ret->size = packetoffset-2;
 	memcpy(ret->buf, packet, ret->size);
 	if (verbose>2)
-		printf("Got packet size %d\n",ret->size);
+		printf("Got packet size %d\n",(int)ret->size);
 out:
 	free(packet);
 	packet = NULL;
@@ -148,7 +148,7 @@ int hdlc_sendpacket(connection_t fd, const unsigned char *buffer, size_t size)
 	if(verbose>2) {
 		struct timeval tv;
 		gettimeofday(&tv,NULL);
-		printf("[%d.%06d] Tx:",tv.tv_sec,tv.tv_usec
+		printf("[%d.%06d] Tx:",(int) tv.tv_sec,(int) tv.tv_usec
 			  );
 		for (i=0; i<txptr-(&txbuf[0]); i++) {
 			printf(" 0x%02x", txbuf[i]);

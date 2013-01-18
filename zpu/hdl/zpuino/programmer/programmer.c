@@ -334,7 +334,7 @@ int read_flash(connection_t conn, flash_info_t *flash, size_t page)
 	buffer_t *b = flash->driver->read_page(flash,conn,page);
 
 	if (verbose>0)
-		printf("Reading page nr %d (offset 0x%08x)\n",page,page*flash->pagesize);
+		printf("Reading page nr %d (offset 0x%08x)\n",(int) page,(int)page*flash->pagesize);
 	if (b) {
 		unsigned int i;
 		for (i=3;i<b->size;i++) {
